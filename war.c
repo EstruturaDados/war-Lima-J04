@@ -1,7 +1,18 @@
 // ============================================================================
 //         PROJETO WAR ESTRUTURADO - DESAFIO DE CÓDIGO
 // ============================================================================
-//        
+//        #include <stdio.h>
+#include <string.h>
+
+#define TOTAL_TERRITORIOS 5
+
+// Definição da struct Territorio
+// Armazena nome do território, cor do exército e número de tropas
+typedef struct {
+    char nome[30];
+    char cor[10];
+    int tropas;
+} Territorio;
 // ============================================================================
 //
 // OBJETIVOS:
@@ -32,6 +43,37 @@
 // --- Função Principal (main) ---
 // Função principal que orquestra o fluxo do jogo, chamando as outras funções em ordem.
 int main() {
+    // Declaração de vetor de structs para armazenar 5 territórios
+    Territorio territorios[TOTAL_TERRITORIOS];
+
+    // Entrada de dados para cada território
+    printf("=== Cadastro de Territórios ===\n");
+
+    for (int i = 0; i < TOTAL_TERRITORIOS; i++) {
+        printf("\nCadastro do território %d:\n", i + 1);
+
+        // Solicita o nome do território
+        printf("Digite o nome do território: ");
+        scanf(" %[^\n]", territorios[i].nome); // Lê string com espaços
+
+        // Solicita a cor do exército
+        printf("Digite a cor do exército: ");
+        scanf(" %s", territorios[i].cor); // Lê string sem espaços
+
+        // Solicita a quantidade de tropas
+        printf("Digite o número de tropas: ");
+        scanf("%d", &territorios[i].tropas);
+    }
+
+    // Exibição dos dados de todos os territórios cadastrados
+    printf("\n=== Territórios Cadastrados ===\n");
+
+    for (int i = 0; i < TOTAL_TERRITORIOS; i++) {
+        printf("\nTerritório %d:\n", i + 1);
+        printf("Nome: %s\n", territorios[i].nome);
+        printf("Cor do Exército: %s\n", territorios[i].cor);
+        printf("Quantidade de Tropas: %d\n", territorios[i].tropas);
+    }
     // 1. Configuração Inicial (Setup):
     // - Define o locale para português.
     // - Inicializa a semente para geração de números aleatórios com base no tempo atual.
